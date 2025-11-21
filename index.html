@@ -1,0 +1,1993 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rosario Marra</title>
+    
+    <link rel="icon" href="Logo Rosario Marra-09.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- 1. Impostazioni Globali (Dark Mode) --- */
+        :root {
+            --bg-color: #000000;
+            --text-color: #F5F5F7;
+            --text-secondary: #888888;
+            --bg-secondary: #1C1C1E;
+            
+            /* --- Colori accentati --- */
+            --accent-color: #0A84FF; /* Blu primario */
+            --accent-color-orange: #FF7A00; /* Arancio Tech per dettagli */
+
+            --border-color: #333333;
+            --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            
+            /* Variabili per il carosello */
+            --card-width: 320px; 
+            --gap-width: 25px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden; 
+        }
+
+        /* --- 2. Stili Generali (Titoli, Link, Bottoni) --- */
+        h1, h2, h3 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        
+        h4 {
+            font-size: 1.1rem;
+            color: var(--text-color);
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        h1 { font-size: 3.5rem; color: #FFFFFF; }
+        h2 { font-size: 2.5rem; text-align: center; color: #FFFFFF;}
+        h3 { font-size: 1.3rem; color: var(--text-color); }
+
+        p {
+            font-size: 1.1rem;
+            font-weight: 300;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+        
+        .intro-text {
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: var(--text-secondary);
+            text-align: center; 
+            max-width: 700px; 
+            margin: 0 auto 50px auto;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        a:hover {
+            opacity: 0.7;
+        }
+
+        /* --- MODIFICA: Ridotta spaziatura verticale --- */
+        section {
+            padding: 60px 5%; /* Era 80px */
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        /* --- FINE MODIFICA --- */
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        /* --- 3. Header e Navigazione (CON HAMBURGER) --- */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 8px 5%; 
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-color);
+            z-index: 110;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center; 
+            list-style: none;
+        }
+
+        .nav-menu li { margin-left: 20px; } 
+        .nav-menu a {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+        
+        .nav-menu .nav-button-outline a {
+            background: transparent;
+            border: 1px solid var(--text-color);
+            color: var(--text-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            display: inline-flex; 
+            align-items: center;
+            gap: 5px; 
+        }
+        .nav-menu .nav-button-outline a:hover {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            opacity: 1;
+        }
+
+        .nav-menu .nav-button-primary a {
+            background-color: var(--accent-color);
+            color: #FFFFFF;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            display: inline-flex; 
+            align-items: center;
+            gap: 5px; 
+            border: 1px solid var(--accent-color); 
+        }
+        .nav-menu .nav-button-primary a:hover {
+            background-color: #FFFFFF;
+            color: #000000;
+            opacity: 1; 
+            border-color: #FFFFFF;
+        }
+
+        .nav-menu .nav-button-primary a svg,
+        .nav-menu .nav-button-outline a svg {
+            width: 18px;
+            height: 18px;
+            stroke-width: 2;
+        }
+
+
+        .hamburger-menu {
+            display: none;
+            width: 30px;
+            height: 22px;
+            cursor: pointer;
+            z-index: 110;
+            position: relative;
+        }
+        
+        .hamburger-menu .line {
+            width: 100%;
+            height: 3px;
+            background-color: var(--text-color);
+            border-radius: 3px;
+            position: absolute;
+            transition: all 0.3s ease-in-out;
+        }
+        
+        .hamburger-menu .line1 { top: 0; }
+        .hamburger-menu .line2 { top: 9px; }
+        .hamburger-menu .line3 { top: 18px; }
+
+        /* --- INIZIO MODIFICA: Stili per wrapper bottoni (Desktop) --- */
+        .nav-buttons-wrapper {
+            margin-left: 0; /* Sovrascrive il margine del LI */
+        }
+        
+        .nav-buttons-inner-list {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .nav-buttons-inner-list > li {
+            margin-left: 20px; /* Ripristina il margine sui bottoni */
+        }
+        /* --- FINE MODIFICA --- */
+
+        .nav-open .line1 { transform: translateY(9px) rotate(45deg); }
+        .nav-open .line2 { opacity: 0; }
+        .nav-open .line3 { transform: translateY(-9px) rotate(-45deg); }
+
+        /* --- 4. Sezione Hero --- */
+        .hero-section {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-top: 100px;
+            
+            background-image: url('Home.jpeg'); 
+            background-size: cover; 
+            background-position: center; 
+            position: relative; 
+            
+            max-width: 100%; 
+            padding-left: 0; 
+            padding-right: 0;
+            padding-bottom: 0;
+        }
+        
+        .hero-section::before {
+            content: ''; 
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.75); 
+            z-index: 1; 
+        }
+
+        @keyframes hero-reveal {
+            from {
+                opacity: 0;
+                transform: scale(1.05);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            position: relative; 
+            z-index: 2; 
+            animation: hero-reveal 1.2s cubic-bezier(0.215, 0.610, 0.355, 1) 0.2s both;
+            padding-bottom: 100px;
+        }
+        
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0), var(--bg-color) 90%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .hero-content h1 {
+            font-weight: 900;
+            letter-spacing: -1px;
+        }
+
+        .dynamic-text-container {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #888;
+            height: 1.2em;
+        }
+        
+        #dynamic-word {
+            display: inline-block;
+            transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        #dynamic-word.fade-out {
+            opacity: 0;
+            transform: translateY(15px);
+        }
+
+        .text-blue {
+            color: var(--accent-color);
+        }
+        .text-orange {
+            color: var(--accent-color-orange);
+        }
+        .text-orange strong {
+            color: var(--accent-color-orange);
+            font-weight: 700;
+        }
+
+
+        .typed-text-container {
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: var(--text-secondary);
+            margin: 15px auto 0 auto; 
+            min-height: 3em; 
+            max-width: 600px; 
+            display: block; 
+            white-space: normal; 
+            position: relative;
+            text-align: center; 
+        }
+
+        .typed-cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1.2em;
+            background-color: var(--text-secondary);
+            margin-left: 5px;
+            vertical-align: middle;
+            animation: blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes blink-caret {
+            from, to { background-color: transparent; }
+            50% { background-color: var(--text-secondary); }
+        }
+        
+        /* --- 5. Sezione Servizi --- */
+        .services-section h2 {
+            margin-bottom: 20px; 
+        }
+
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .service-card {
+            background-color: var(--bg-secondary);
+            padding: 30px; 
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .service-card-image {
+            width: 100%;
+            height: 150px; 
+            object-fit: cover; 
+            border-radius: 12px; 
+            margin-bottom: 25px; 
+        }
+        
+        .service-card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .service-icon-wrapper {
+             width: 50px;
+             height: 50px;
+             border-radius: 50%;
+             background-color: rgba(10, 132, 255, 0.1); 
+             display: flex;
+             justify-content: center;
+             align-items: center;
+             border: 1px solid var(--border-color);
+             transition: all 0.3s ease;
+             flex-shrink: 0;
+        }
+        
+        .service-icon-wrapper svg {
+            width: 24px;
+            height: 24px;
+            color: var(--accent-color);
+            stroke-width: 1.5;
+        }
+        
+        .service-card-header h3 {
+            color: #FFFFFF;
+            margin-bottom: 0;
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            font-weight: 400;
+            margin-bottom: 15px; 
+        }
+        .service-card p:last-of-type {
+            margin-bottom: 0; 
+        }
+
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(10, 132, 255, 0.2);
+            border-color: var(--accent-color);
+        }
+        
+        .service-card:hover .service-icon-wrapper {
+             border-color: var(--accent-color);
+             box-shadow: 0 0 15px rgba(10, 132, 255, 0.3);
+             transform: scale(1.05);
+         }
+
+        /* --- 6. Sezione Progetti (CAROUSEL CON PULSANTI) --- */
+        .projects-section {
+            text-align: center;
+            padding-left: 0; 
+            padding-right: 0;
+            max-width: 100%; 
+        }
+        .projects-section h2 {
+            margin-bottom: 20px;
+        }
+        .projects-section .intro-text {
+            max-width: 700px;
+            margin: 0 auto 50px auto;
+            padding: 0 5%; 
+        }
+
+        .slider-wrapper {
+            position: relative;
+            max-width: 1100px; 
+            margin: 0 auto; 
+        }
+        
+        .projects-slider-container {
+            width: 100%;
+            overflow: hidden; 
+            padding: 0 20px; 
+        }
+
+        .projects-slider-container::before,
+        .projects-slider-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 10%; 
+            z-index: 5;
+            pointer-events: none; 
+        }
+
+        .projects-slider-container::before {
+            left: 0;
+            background: linear-gradient(to right, var(--bg-color) 0%, rgba(0,0,0,0) 100%);
+        }
+
+        .projects-slider-container::after {
+            right: 0;
+            background: linear-gradient(to left, var(--bg-color) 0%, rgba(0,0,0,0) 100%);
+        }
+
+        .project-grid {
+            display: flex;
+            gap: var(--gap-width);
+            padding-bottom: 20px; 
+            scroll-behavior: smooth; 
+            -webkit-overflow-scrolling: touch; 
+            overflow-x: auto; 
+            scrollbar-width: none; 
+        }
+
+        .project-grid::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .project-card {
+            background-color: var(--bg-secondary);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            text-align: left;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            
+            width: var(--card-width);
+            min-width: var(--card-width); 
+            flex-shrink: 0; 
+        }
+
+        .project-card h3 {
+            font-size: 1.4rem;
+            color: #FFFFFF;
+            margin-bottom: 10px;
+        }
+
+        .project-card p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            flex-grow: 1; 
+        }
+        
+        .project-card .tech-stack {
+            font-size: 0.85rem;
+            color: #CCCCCC; 
+            margin-top: 10px;
+            margin-bottom: 20px;
+            background-color: rgba(255, 122, 0, 0.1); /* Sfondo Arancio */
+            padding: 8px 12px;
+            border-radius: 8px;
+            display: inline-block; 
+            font-weight: 500; 
+        }
+
+        .project-card .github-link {
+            display: inline-flex; 
+            align-items: center;
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+        .project-card .github-link svg {
+            width: 18px;
+            height: 18px;
+            margin-right: 8px;
+            stroke: currentColor; 
+            stroke-width: 2;
+        }
+        
+        .project-card:hover {
+            border-color: var(--accent-color);
+            box-shadow: 0 10px 30px rgba(10, 132, 255, 0.2);
+        }
+
+        /* Frecce di navigazione */
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+            color: var(--text-color);
+        }
+        
+        .slider-arrow:hover {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: #FFFFFF;
+        }
+
+        .slider-arrow.left {
+            left: 0px; 
+        }
+
+        .slider-arrow.right {
+            right: 0px; 
+        }
+        
+        .slider-arrow svg {
+            width: 24px;
+            height: 24px;
+            stroke-width: 2;
+        }
+
+        /* --- 7. Sezione Competenze (Accordion) --- */
+        .tech-section {
+            position: relative;
+            overflow: hidden;
+            background-image: url('https://images.unsplash.com/photo-1635350736503-c39c8b3316d3?q=80&w=2670&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; 
+            
+            max-width: 100%;
+            padding-top: 80px; 
+            padding-bottom: 80px; 
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        .tech-section h2 {
+            margin-bottom: 20px; 
+            position: relative; 
+            z-index: 2;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: 1fr; 
+            gap: 20px;
+            position: relative; 
+            z-index: 2;
+            
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        /* --- MODIFICA: Ridotta dimensione card competenza --- */
+        .tech-card {
+            background-color: rgba(28, 28, 30, 0.85); 
+            backdrop-filter: blur(5px); 
+            
+            border-radius: 15px;
+            padding: 12px 20px; /* Era 15px 25px */
+            border: 1px solid var(--border-color);
+            transition: padding 0.4s ease-out, border-color 0.3s ease, background-color 0.3s ease; 
+            cursor: pointer; 
+        }
+        /* --- FINE MODIFICA --- */
+        
+        .tech-card:hover {
+            border-color: var(--accent-color);
+            background-color: rgba(10, 132, 255, 0.15); 
+        }
+        
+        .tech-card.active {
+            border-color: var(--accent-color);
+            padding-bottom: 20px; /* Era 25px */
+            background-color: rgba(10, 132, 255, 0.1); 
+        }
+
+        .tech-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .tech-card-header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px; 
+        }
+        
+        /* --- NUOVO: Icona grafica per card competenza --- */
+        .tech-card-icon {
+            width: 18px;
+            height: 18px;
+            color: var(--text-secondary); /* Colore grigio (spento) */
+            transition: color 0.3s ease;
+            flex-shrink: 0;
+            stroke-width: 1.5;
+        }
+        .tech-card:hover .tech-card-icon,
+        .tech-card.active .tech-card-icon {
+            color: var(--accent-color); /* Colore blu (attivo) */
+        }
+        /* --- FINE NUOVO --- */
+        
+        .tech-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 0; 
+            line-height: 1.5;
+        }
+
+        .accordion-icon {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            transition: transform 0.3s ease;
+            font-weight: 700;
+        }
+        .tech-card.active .accordion-icon {
+            transform: rotate(45deg); 
+        }
+        
+        .tech-card-content {
+            display: grid;
+            grid-template-rows: 0fr;
+            overflow: hidden;
+            transition: grid-template-rows 0.5s cubic-bezier(0.215, 0.610, 0.355, 1), 
+                        margin-top 0.5s cubic-bezier(0.215, 0.610, 0.355, 1);
+        }
+        
+        .tech-card-content-inner {
+            overflow: hidden;
+            padding-top: 0px;
+            transition: padding-top 0.3s ease-out 0.2s;
+        }
+        
+        .tech-card.active .tech-card-content {
+            grid-template-rows: 1fr;
+            margin-top: 20px; 
+        }
+        
+        .tech-card.active .tech-card-content-inner {
+             padding-top: 5px;
+        }
+
+        .tech-card-image {
+            width: 100%;
+            height: 80px; 
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px; 
+        }
+        
+        .tech-card-details {
+            background-color: rgba(10, 132, 255, 0.1);
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        .tech-card-details p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            margin-bottom: 15px; 
+        }
+        .tech-card-details p:last-of-type {
+            margin-bottom: 0;
+        }
+
+
+        /* --- 8. Sezione Contatti (CTA) --- */
+        .cta-section {
+            text-align: center;
+            background-color: var(--bg-secondary);
+            border-radius: 20px;
+            padding: 80px 5%;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 40px;
+            color: var(--text-secondary);
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 700;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: #fff;
+        }
+        
+        .btn-primary:hover {
+            background-color: #FFFFFF;
+            color: #000;
+            transform: translateY(-3px);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-color);
+            border: 2px solid var(--border-color);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: #FFFFFF;
+            transform: translateY(-3px);
+        }
+
+        /* --- 9. Footer --- */
+        .main-footer {
+            text-align: center;
+            padding: 40px 5%;
+            border-top: 1px solid var(--border-color);
+            margin-top: 0px; /* Rimosso spazio per animazione */
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-logo {
+            flex-shrink: 0;
+            opacity: 0.7;
+        }
+        
+        .footer-contact {
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 10px; 
+        }
+        
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-contact-item p {
+            margin: 0;
+            font-size: 1rem;
+            color: var(--text-color);
+            font-weight: 400;
+        }
+        
+        .footer-icon {
+            width: 20px;
+            height: 20px;
+            color: var(--accent-color);
+            flex-shrink: 0;
+        }
+
+        .footer-contact a {
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+        
+        .footer-social {
+            text-align: left;
+        }
+        .footer-social-links {
+            display: flex;
+            gap: 20px;
+        }
+        .footer-social-links a {
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+        }
+        .footer-social-links a:hover {
+            color: var(--accent-color);
+            opacity: 1;
+        }
+        .footer-social-links svg {
+            width: 30px;
+            height: 30px;
+        }
+
+        .cv-button {
+            padding: 12px 28px;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            background-color: var(--accent-color);
+            color: #fff;
+            border: 1px solid var(--accent-color);
+            
+            animation: pulse 2s infinite;
+        }
+        
+        .cv-button:hover {
+            transform: translateY(-3px);
+            animation-play-state: paused; 
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(10, 132, 255, 0.7);
+            }
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 10px rgba(10, 132, 255, 0);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(10, 132, 255, 0);
+            }
+        }
+
+        .footer-copyright {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* --- 10. ELEMENTI GRAFICI (Divisori) --- */
+        
+        /* --- MODIFICA: Divisore rimosso --- */
+        .section-divider {
+            display: none;
+        }
+
+        /* Stili per l'animazione di caricamento (spostata) */
+        .loading-animation-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            padding: 40px 0 40px 0; 
+            font-family: 'Courier New', Courier, monospace; 
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            min-height: 2.5em; 
+        }
+        
+        /* --- NUOVO: Stile per animazione footer --- */
+        .footer-animation-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            padding: 40px 0 40px 0; /* Spaziatura prima del footer */
+            font-family: 'Courier New', Courier, monospace; 
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            min-height: 2.5em; 
+        }
+
+
+        .loading-prompt {
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+        
+        #loading-text, #loading-text-footer {
+            color: var(--text-color);
+            white-space: nowrap; 
+            text-align: left;
+            min-width: 300px; 
+        }
+        
+        /* Specifico per il footer per centrare il testo più corto */
+        #loading-text-footer {
+            min-width: 150px;
+            max-width: 150px;
+            flex-grow: 0;
+        }
+        .footer-animation-wrapper .blinking-cursor-new {
+            flex-shrink: 0;
+        }
+        /* --- FINE NUOVO --- */
+
+
+        .blinking-cursor-new {
+            width: 10px;
+            height: 1.2rem;
+            background: var(--accent-color-orange); /* Cursore Arancio */
+            animation: blink-caret-orange 1s step-end infinite;
+        }
+
+        @keyframes blink-caret-orange {
+            from, to { background-color: transparent; }
+            50% { background-color: var(--accent-color-orange); }
+        }
+        /* --- FINE STILI ANIMAZIONE --- */
+
+
+        /* --- 11. ANIMAZIONI DINAMICHE (Scroll-Reveal) --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.6s ease-out;
+            will-change: opacity, transform;
+        }
+
+        .reveal.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .tech-card:nth-child(1) { transition-delay: 0.05s; }
+        .tech-card:nth-child(2) { transition-delay: 0.1s; }
+        .tech-card:nth-child(3) { transition-delay: 0.15s; }
+        .tech-card:nth-child(4) { transition-delay: 0.2s; }
+        .tech-card:nth-child(5) { transition-delay: 0.25s; }
+        .tech-card:nth-child(6) { transition-delay: 0.3s; }
+
+        /* --- 12. Responsive (Gestione Menu Mobile) --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            .hero-content .subtitle { font-size: 1.2rem; }
+            
+            .dynamic-text-container { 
+                font-size: 1.6rem; /* MODIFICA: Ridotto da 1.7rem per evitare wrap */
+            }
+            
+            section {
+                padding: 40px 5%; /* Ridotto */
+            }
+            .hero-content {
+                padding-bottom: 60px;
+            }
+            .loading-animation-wrapper {
+                padding: 20px 0 30px 0;
+            }
+            .footer-animation-wrapper {
+                padding: 20px 0 30px 0;
+            }
+
+
+            .hero-section {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+            
+            .projects-section {
+                 padding-left: 0;
+                 padding-right: 0;
+            }
+            
+            .tech-section {
+                padding-left: 5%;
+                padding-right: 5%;
+                padding-top: 40px;
+                padding-bottom: 40px;
+            }
+            .container {
+                padding: 0;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .hamburger-menu {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                left: 100%;
+                width: 100%;
+                height: 100vh;
+                background-color: var(--bg-color);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: transform 0.4s ease-in-out;
+            }
+            
+            .nav-open .nav-menu {
+                transform: translateX(-100%);
+            }
+
+            .nav-menu li {
+                margin: 20px 0;
+            }
+
+            .nav-menu a {
+                font-size: 1.5rem;
+                font-weight: 700;
+            }
+            
+            /* --- INIZIO MODIFICA: Stili per bottoni su riga unica in mobile --- */
+            .nav-menu li.nav-buttons-wrapper {
+                margin: 20px 0; /* Mantiene la spaziatura verticale */
+            }
+
+            .nav-buttons-inner-list {
+                display: flex;
+                flex-direction: row; /* Richiesta: bottoni sulla stessa riga */
+                justify-content: center;
+                align-items: center;
+                gap: 20px; /* Spazio tra i bottoni */
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+            
+            .nav-buttons-inner-list > li {
+                margin: 0; /* Azzera i margini verticali/orizzontali dei LI interni */
+            }
+            /* --- FINE MODIFICA --- */
+
+            .nav-menu .nav-button-primary a,
+            .nav-menu .nav-button-outline a {
+                font-size: 1rem; 
+                font-weight: 700;
+                padding: 8px 18px; 
+                color: var(--text-color); 
+            }
+            .nav-menu .nav-button-primary a:hover,
+            .nav-menu .nav-button-outline a:hover {
+                background: transparent;
+                color: var(--accent-color);
+                opacity: 0.8;
+                border-color: var(--accent-color);
+            }
+            
+            .nav-menu .nav-button-primary a {
+                background-color: var(--accent-color);
+                border-color: var(--accent-color);
+                color: #FFF;
+            }
+            .nav-menu .nav-button-outline a {
+                background: transparent;
+                border: 1px solid var(--text-color);
+            }
+
+            .nav-menu .nav-button-primary a svg,
+            .nav-menu .nav-button-outline a svg {
+                display: inline-block; 
+                width: 16px; 
+                height: 16px;
+            }
+
+            .slider-arrow {
+                width: 35px;
+                height: 35px;
+                top: 45%; 
+            }
+            .slider-arrow svg {
+                width: 18px;
+                height: 18px;
+            }
+            .slider-arrow.left {
+                left: 5px; 
+            }
+            .slider-arrow.right {
+                right: 5px; 
+            }
+
+
+            .projects-slider-container::before,
+            .projects-slider-container::after {
+                width: 5%; 
+            }
+            
+            .projects-slider-container {
+                padding: 0 10px; 
+            }
+
+            .typed-text-container {
+                min-height: 4.5em; 
+                height: auto;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 40px; 
+            }
+            .footer-logo {
+                order: -1; 
+            }
+            .footer-contact {
+                text-align: center;
+                align-items: center; 
+            }
+            .footer-contact-item {
+                justify-content: center; 
+            }
+            .footer-social {
+                text-align: center;
+            }
+            .footer-social-links {
+                justify-content: center; 
+            }
+        }
+        
+        /* --- 13. Pulsante Scroll-to-Top (MODIFICATO) --- */
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 50; /* Sotto l'header (100) ma sopra il resto */
+            
+            /* MODIFICA: Forma circolare, meno invasiva */
+            background-color: var(--accent-color-orange);
+            color: #FFFFFF;
+            width: 45px;  /* Dimensione uniforme */
+            height: 45px; /* Dimensione uniforme */
+            border-radius: 50%; /* Cerchio perfetto */
+            
+            /* Stili base */
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Ombra leggera */
+            
+            /* Visibilità (Nascosto di default) */
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(15px);
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        #scrollToTopBtn svg {
+            width: 22px;
+            height: 22px;
+            stroke-width: 2.5; /* Leggermente più spessa */
+        }
+        
+        #scrollToTopBtn.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        #scrollToTopBtn:hover {
+            transform: translateY(-3px); /* Effetto sollevamento */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            /* Puoi anche scurire leggermente il colore se vuoi */
+            /* background-color: #E66E00; */ 
+        }
+
+    </style>
+    </head>
+<body class=""> <header class="main-header">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="Logo Rosario Marra-09.png" alt="Logo Personale" style="height: 30px; width: auto;">
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="#hero">Chi Sono</a></li>
+                <li><a href="#servizi">Servizi</a></li> 
+                <li><a href="#progetti">Progetti</a></li>
+                <li><a href="#competenze">Competenze</a></li>
+                <li><a href="#contatti">Contatti</a></li>
+                
+                <li class="nav-buttons-wrapper">
+                    <ul class="nav-buttons-inner-list">
+                        <li class="nav-button-outline"><a href="e-learning.html">E-learning</a></li>
+                        <li class="nav-button-primary"> 
+                            <a href="#">
+                                IDECode
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                </ul>
+            
+            <div class="hamburger-menu">
+                <div class="line line1"></div>
+                <div class="line line2"></div>
+                <div class="line line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <section id="hero" class="hero-section">
+            <div class="hero-content">
+                <h1>Plasmo l'innovazione nell'ICT.</h1>
+                
+                <h2 class="dynamic-text-container">
+                    Progettando <span id="dynamic-word" class="text-blue">la Formazione</span>.
+                </h2>
+                
+                <p class="typed-text-container">
+                    <span id="typed-output"></span><span class="typed-cursor"></span>
+                </p>
+            </div>
+        </section>
+
+        <section id="servizi" class="services-section">
+            <h2 class="reveal">Cosa Faccio</h2>
+            
+            <p class="intro-text reveal">
+                Il mio lavoro si concentra su tre aree chiave: formare la prossima generazione di talenti, identificare i professionisti giusti per le aziende e guidare studenti e docenti nel loro percorso di crescita.
+            </p>
+
+            <div class="services-container">
+                
+                <article class="service-card reveal">
+                    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2670&auto=format&fit=crop" alt="Formazione ICT" class="service-card-image">
+                    
+                    <div class="service-card-header">
+                        <div class="service-icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.627 48.627 0 0 1 12 20.904a48.627 48.627 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.57 50.57 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
+                            </svg>
+                        </div>
+                        <h3>Formazione ICT & Curriculum</h3>
+                    </div>
+                    
+                    <p>Progettazione di percorsi e laboratori pratici su AI, Web, IoT e Software Architecture.</p>
+                    <p>Il mio approccio unisce <strong class="text-orange">solide basi teoriche</strong> a <strong class="text-orange">competenze pratiche</strong> immediatamente spendibili.</p>
+                </article>
+                
+                <article class="service-card reveal">
+                    <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?q=80&w=2670&auto=format&fit=crop" alt="Recruiting Tecnico" class="service-card-image">
+                    
+                    <div class="service-card-header">
+                        <div class="service-icon-wrapper">
+                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                               <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                             </svg>
+                        </div>
+                        <h3>Recruiting Tecnico</h3>
+                    </div>
+
+                    <p>Talent scouting per aziende IT. Dall'analisi del job profile alla short list mirata.</p>
+                    <p>Trovo i <strong class="text-orange">profili giusti</strong> per la tua azienda, valorizzando sia le <strong>hard skills</strong> che il <strong class="text-orange">potenziale di crescita</strong>.</p>
+                </article>
+                
+                <article class="service-card reveal">
+                    <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=2670&auto=format&fit=crop" alt="Mentoring" class="service-card-image">
+
+                    <div class="service-card-header">
+                        <div class="service-icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                               <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-3.75 0m3.75 0a12.06 12.06 0 0 0-3.75 0M12 18c-1.24 0-2.433-.002-3.633-.006a11.97 11.97 0 0 1-5.002-1.001 11.98 11.98 0 0 1-2.27-2.27 11.97 11.97 0 0 1-1.001-5.002A11.97 11.97 0 0 1 2.25 12c0-1.24.002-2.433.006-3.633a11.97 11.97 0 0 1 1.001-5.002 11.98 11.98 0 0 1 2.27-2.27 11.97 11.97 0 0 1 5.002-1.001A11.97 11.97 0 0 1 12 2.25c1.24 0 2.433.002 3.633.006a11.97 11.97 0 0 1 5.002 1.001 11.98 11.98 0 0 1 2.27 2.27 11.97 11.97 0 0 1 1.001 5.002A11.97 11.97 0 0 1 21.75 12c0 1.24-.002-2.433-.006 3.633a11.97 11.97 0 0 1-1.001 5.002 11.98 11.98 0 0 1-2.27 2.27 11.97 11.97 0 0 1-5.002 1.001A11.97 11.97 0 0 1 12 18Z" />
+                            </svg>
+                        </div>
+                        <h3>Mentoring</h3>
+                    </div>
+                    
+                    <p>Supporto a docenti e studenti: percorsi, tesi, progetti e inserimento nel lavoro.</p>
+                    <p>Guido gli studenti nella <strong class="text-orange">definizione degli obiettivi</strong> e nel <strong class="text-orange">raggiungimento del successo</strong> professionale.</p>
+                </article>
+                
+            </div>
+        </section>
+
+        <section id="progetti" class="projects-section">
+            <h2 class="reveal">I Miei Progetti GitHub</h2>
+            <p class="intro-text reveal">Esplora alcune delle mie realizzazioni e contributi più recenti nel mondo dello sviluppo software e della didattica.</p>
+            
+            <div class="slider-wrapper">
+                <div class="projects-slider-container">
+                    <div class="project-grid">
+                        
+                        <article class="project-card">
+                            <div>
+                                <h3>Laboratorio IoT con ESP32</h3>
+                                <p>Simulazione di un sistema di monitoraggio ambientale con sensori e trasmissione dati in tempo reale.</p>
+                                <p class="tech-stack">Tecnologie: C++, ESP-IDF, MQTT</p>
+                            </div>
+                            <a href="https://github.com/tuo-profilo/lab-iot-esp32" target="_blank" rel="noopener noreferrer" class="github-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48v-1.4c-2.8-.6-3.4-1.34-3.4-1.34-.46-1.16-1.1-1.47-1.1-1.47-.9-.6.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.9.83.09-.65.34-1.07.63-1.32-2.2-.25-4.5-1.1-4.5-4.9A3.75 3.75 0 0 1 6.5 6.7c-.1-.25-.45-1.1.09-2.28 0 0 .88-.27 2.93 1.02A10.1 10.1 0 0 1 12 5.57c.96.02 1.92.17 2.85.45 2.04-1.29 2.92-1.02 2.92-1.02.54 1.18.19 2.03.09 2.28a3.75 3.75 0 0 1 1.02 2.72c0 3.8-2.3 4.64-4.5 4.9.35.3.67.9.67 1.8v2.1c0 .26.18.57.68.48C21.13 20.17 24 16.42 24 12A10 10 0 0 0 12 2Z" clip-rule="evenodd"/>
+                                </svg>
+                                Vedi su GitHub
+                            </a>
+                        </article>
+
+                        <article class="project-card">
+                            <div>
+                                <h3>Framework didattico Python</h3>
+                                <p>Un micro-framework per insegnare i concetti di base dello sviluppo web e delle API REST.</p>
+                                <p class="tech-stack">Tecnologie: Python, Flask, SQLite</p>
+                            </div>
+                            <a href="https://github.com/tuo-profilo/py-didactic-framework" target="_blank" rel="noopener noreferrer" class="github-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48v-1.4c-2.8-.6-3.4-1.34-3.4-1.34-.46-1.16-1.1-1.47-1.1-1.47-.9-.6.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.9.83.09-.65.34-1.07.63-1.32-2.2-.25-4.5-1.1-4.5-4.9A3.75 3.75 0 0 1 6.5 6.7c-.1-.25-.45-1.1.09-2.28 0 0 .88-.27 2.93 1.02A10.1 10.1 0 0 1 12 5.57c.96.02 1.92.17 2.85.45 2.04-1.29 2.92-1.02 2.92-1.02.54 1.18.19 2.03.09 2.28a3.75 3.75 0 0 1 1.02 2.72c0 3.8-2.3 4.64-4.5 4.9.35.3.67.9.67 1.8v2.1c0 .26.18.57.68.48C21.13 20.17 24 16.42 24 12A10 10 0 0 0 12 2Z" clip-rule="evenodd"/>
+                                </svg>
+                                Vedi su GitHub
+                            </a>
+                        </article>
+
+                        <article class="project-card">
+                            <div>
+                                <h3>Analisi dati con Pandas e Matplotlib</h3>
+                                <p>Esempi di script per l'analisi e la visualizzazione di dataset complessi a scopo didattico.</p>
+                                <p class="tech-stack">Tecnologie: Python, Pandas, Matplotlib</p>
+                            </div>
+                            <a href="https://github.com/tuo-profilo/data-analysis-examples" target="_blank" rel="noopener noreferrer" class="github-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48v-1.4c-2.8-.6-3.4-1.34-3.4-1.34-.46-1.16-1.1-1.47-1.1-1.47-.9-.6.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.9.83.09-.65.34-1.07.63-1.32-2.2-.25-4.5-1.1-4.5-4.9A3.75 3.75 0 0 1 6.5 6.7c-.1-.25-.45-1.1.09-2.28 0 0 .88-.27 2.93 1.02A10.1 10.1 0 0 1 12 5.57c.96.02 1.92.17 2.85.45 2.04-1.29 2.92-1.02 2.92-1.02.54 1.18.19 2.03.09 2.28a3.75 3.75 0 0 1 1.02 2.72c0 3.8-2.3 4.64-4.5 4.9.35.3.67.9.67 1.8v2.1c0 .26.18.57.68.48C21.13 20.17 24 16.42 24 12A10 10 0 0 0 12 2Z" clip-rule="evenodd"/>
+                                </svg>
+                                Vedi su GitHub
+                            </a>
+                        </article>
+                        
+                        <article class="project-card">
+                            <div>
+                                <h3>Architettura Microservizi (Demo)</h3>
+                                <p>Una semplice architettura di microservizi per la gestione di ordini, containerizzata con Docker.</p>
+                                <p class="tech-stack">Tecnologie: Docker, Docker Compose, Node.js</p>
+                            </div>
+                            <a href="https://github.com/tuo-profilo/microservices-demo" target="_blank" rel="noopener noreferrer" class="github-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48v-1.4c-2.8-.6-3.4-1.34-3.4-1.34-.46-1.16-1.1-1.47-1.1-1.47-.9-.6.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.9.83.09-.65.34-1.07.63-1.32-2.2-.25-4.5-1.1-4.5-4.9A3.75 3.75 0 0 1 6.5 6.7c-.1-.25-.45-1.1.09-2.28 0 0 .88-.27 2.93 1.02A10.1 10.1 0 0 1 12 5.57c.96.02 1.92.17 2.85.45 2.04-1.29 2.92-1.02 2.92-1.02.54 1.18.19 2.03.09 2.28a3.75 3.75 0 0 1 1.02 2.72c0 3.8-2.3 4.64-4.5 4.9.35.3.67.9.67 1.8v2.1c0 .26.18.57.68.48C21.13 20.17 24 16.42 24 12A10 10 0 0 0 12 2Z" clip-rule="evenodd"/>
+                                </svg>
+                                Vedi su GitHub
+                            </a>
+                        </article>
+                        
+                    </div>
+                </div>
+                <button class="slider-arrow left" aria-label="Scorri a sinistra">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                    </svg>
+                </button>
+                <button class="slider-arrow right" aria-label="Scorri a destra">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5 15.75 12l-7.5 7.5" />
+                    </svg>
+                </button>
+            </div>
+        </section>
+        
+        <div class="loading-animation-wrapper reveal">
+            <span class="loading-prompt">></span>
+            <span id="loading-text"></span>
+            <span class="blinking-cursor-new"></span>
+        </div>
+        
+        <section id="competenze" class="tech-section">
+            <div class="container">
+                <h2 class="reveal">Aree di Competenza</h2>
+                
+                <p class="intro-text reveal">
+                    La mia expertise copre le tecnologie più richieste dal mercato. Dalle <strong>architetture cloud</strong> ai modelli di <span class="text-orange"><strong>intelligenza artificiale</strong></span>, ecco le aree dove posso fare la differenza.
+                </p>
+                
+                <div class="tech-grid">
+                    
+                    <div class="tech-card reveal">
+                        <div class="tech-card-header">
+                            <div class="tech-card-header-left">
+                                <svg class="tech-card-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 0 1 0 3.75H5.625a1.875 1.875 0 0 1 0-3.75Z" />
+                                </svg>
+                                <h3>Docker</h3>
+                            </div>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="tech-card-content">
+                            <div class="tech-card-content-inner">
+                                <img src="https://images.unsplash.com/photo-1550439062-609e1531270e?q=80&w=2670&auto=format&fit=crop" alt="Programmazione e sviluppo" class="tech-card-image">
+                                <div class="tech-card-details">
+                                    <p>Es. Laboratori su architetture a microservizi e deploy CI/CD.</p>
+                                    <p>Creazione di <strong>pipeline CI/CD</strong> per l'automazione del rilascio e la gestione di <strong>ambienti complessi</strong>.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tech-card reveal">
+                         <div class="tech-card-header">
+                            <div class="tech-card-header-left">
+                                <svg class="tech-card-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                  <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5 0-4.5 16.5" />
+                                </svg>
+                                <h3>Python</h3>
+                            </div>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="tech-card-content">
+                             <div class="tech-card-content-inner">
+                                <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?q=80&w=2670&auto=format&fit=crop" alt="Python" class="tech-card-image">
+                                <div class="tech-card-details">
+                                    <p>Es. Sviluppo backend, data analysis e script per intelligenza artificiale.</p>
+                                    <p>Specializzato in <strong>Data Analysis</strong> e sviluppo di API RESTful, portando i <strong>dati</strong> al centro della strategia.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tech-card reveal">
+                         <div class="tech-card-header">
+                            <div class="tech-card-header-left">
+                                <svg class="tech-card-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.288 15.038a5.25 5.25 0 0 1 7.424 0M11.25 10.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm-3.375 0h.008v.015h-.008V10.125Zm.375 2.25a.75.75 0 0 0 0 1.5h2.25a.75.75 0 0 0 0-1.5H8.25Zm2.25-4.5a.75.75 0 0 0 0-1.5H8.25a.75.75 0 0 0 0 1.5h2.25Z" />
+                                </svg>
+                                <h3>AI & Machine Learning</h3>
+                            </div>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="tech-card-content">
+                             <div class="tech-card-content-inner">
+                                <img src="https://images.unsplash.com/photo-1518349619113-03114f06ac3a?q=80&w=2574&auto=format&fit=crop" alt="AI & Machine Learning" class="tech-card-image">
+                                <div class="tech-card-details">
+                                    <p>Es. Mentoring su tesi e curriculum design su reti neurali e NLP.</p>
+                                    <p>Guida nella prototipazione di modelli di <strong>reti neurali</strong> e applicazione di <strong>NLP</strong> per l'analisi semantica.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tech-card reveal">
+                         <div class="tech-card-header">
+                            <div class="tech-card-header-left">
+                                <svg class="tech-card-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244" />
+                                </svg>
+                                <h3>Socket Programming</h3>
+                            </div>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="tech-card-content">
+                             <div class="tech-card-content-inner">
+                                <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=2670&auto=format&fit=crop" alt="Networking" class="tech-card-image">
+                                <div class="tech-card-details">
+                                    <p>Es. Didattica avanzata sulle reti e creazione di web server custom.</p>
+                                    <p>Formazione avanzata sulla <strong>comunicazione low-level</strong> e sulla creazione di <strong>server TCP/IP</strong> performanti.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tech-card reveal">
+                         <div class="tech-card-header">
+                            <div class="tech-card-header-left">
+                                <svg class="tech-card-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 16.875h3.375m0 0h3.375m-3.375 0V13.5m0 3.375v3.375M6 10.5h2.25a2.25 2.25 0 0 0 2.25-2.25V6a2.25 2.25 0 0 0-2.25-2.25H6A2.25 2.25 0 0 0 3.75 6v2.25A2.25 2.25 0 0 0 6 10.5Zm0 9.75h2.25A2.25 2.25 0 0 0 10.5 18v-2.25a2.25 2.25 0 0 0-2.25-2.25H6a2.25 2.25 0 0 0-2.25 2.25V18A2.25 2.25 0 0 0 6 20.25Zm9.75-9.75H18a2.25 2.25 0 0 0 2.25-2.25V6A2.25 2.25 0 0 0 18 3.75h-2.25A2.25 2.25 0 0 0 13.5 6v2.25a2.25 2.25 0 0 0 2.25 2.25Z" />
+                                </svg>
+                                <h3>Software Architecture</h3>
+                            </div>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="tech-card-content">
+                             <div class="tech-card-content-inner">
+                                <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2670&auto=format&fit=crop" alt="Pianificazione architettura software" class="tech-card-image">
+                                <div class="tech-card-details">
+                                    <p>Es. Recruiting e mentoring su pattern design, (TDD) e sistemi scalabili.</p>
+                                    <p>Mentoring su <strong>design pattern</strong> (TDD, DDD) e progettazione di <strong>sistemi scalabili</strong> e manutenibili.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tech-card reveal">
+                         <div class="tech-card-header">
+                            <div class="tech-card-header-left">
+                                <svg class="tech-card-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                  <path fill-rule="evenodd" d="M10.5 11.25a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z" clip-rule="evenodd" />
+                                  <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm0 1.5a8.25 8.25 0 1 0 0 16.5 8.25 8.25 0 0 0 0-16.5Z" clip-rule="evenodd" />
+                                </svg>
+                                <h3>IoT</h3>
+                            </div>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="tech-card-content">
+                             <div class="tech-card-content-inner">
+                                <img src="https://images.unsplash.com/photo-1550009158-9ebf69173e03?q=80&w=2702&auto=format&fit=crop" alt="IoT" class="tech-card-image">
+                                <div class="tech-card-details">
+                                    <p>Es. Progettazione laboratori e tesi su dispositivi connessi (ESP32, Raspberry).</p>
+                                    <p>Sviluppo di <strong>firmware</strong> per dispositivi connessi (ESP32, Raspberry Pi) e integrazione con <strong>piattaforme cloud</strong>.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> </section>
+
+        <section id="contatti" class="cta-section reveal">
+            <h2>Pronto a collaborare?</h2>
+            <p>Che si tratti di formare un team, trovare un talento o guidare un progetto.</p>
+            <div class="cta-buttons">
+                <a href="https://linkedin.com/in/rosario-marra-2182bb107" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                    Connettiamoci su LinkedIn
+                </a>
+                <a href="mailto:rosario.marra@itscremona.it" class="btn btn-secondary">
+                    Scrivimi
+                </a>
+            </div>
+        </section>
+
+        <div class="footer-animation-wrapper reveal">
+            <span class="loading-prompt">></span>
+            <span id="loading-text-footer"></span>
+            <span class="blinking-cursor-new"></span>
+        </div>
+        </main>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="Logo Rosario Marra-09.png" alt="Logo Personale" style="height: 40px; width: auto;">
+            </div>
+            
+            <div class="footer-contact">
+                <div class="footer-contact-item">
+                    <svg class="footer-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                    </svg>
+                    <p><strong>Email:</strong> <a href="mailto:rosario.marra@itscremona.it">rosario.marra@itscremona.it</a></p>
+                </div>
+                <div class="footer-contact-item">
+                     <svg class="footer-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
+                    </svg>
+                    <p><strong>Cellulare:</strong> +39 3286217534</p>
+                </div>
+                <div class="footer-contact-item">
+                    <svg class="footer-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                    </svg>
+                    <p><strong>Indirizzo:</strong> Crema, Lombardia, Italy</p>
+                </div>
+            </div>
+
+            <div class="footer-social">
+                <h4>Seguimi</h4>
+                <div class="footer-social-links">
+                    <a href="https://linkedin.com/in/rosario-marra-2182bb107" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/tuo-profilo" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.91 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-cv">
+                <a href="CV_Rosario_Marra.pdf" class="cv-button" download>
+                    Scarica il mio CV
+                </a>
+            </div>
+        </div>
+        <p class="footer-copyright">&copy; 2025 Rosario Marra. Tutti i diritti riservati.</p>
+    </footer>
+
+    <button id="scrollToTopBtn" aria-label="Torna su">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+        </svg>
+    </button>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- 1. Animazione Testo Dinamico (Hero) ---
+            const words = [
+                '<span class="text-blue">la Formazione</span>', 
+                '<span class="text-orange">il Talento</span>', 
+                '<span class="text-blue">la Crescita</span>'
+            ];
+            let index = 0;
+            const dynamicWordEl = document.getElementById('dynamic-word');
+
+            if (dynamicWordEl) {
+                // Imposta la prima parola (blu) al caricamento
+                dynamicWordEl.innerHTML = words[0];
+
+                setInterval(() => {
+                    dynamicWordEl.classList.add('fade-out');
+                    setTimeout(() => {
+                        index = (index + 1) % words.length;
+                        dynamicWordEl.innerHTML = words[index]; // Usa .innerHTML per renderizzare lo span
+                        dynamicWordEl.classList.remove('fade-out');
+                    }, 400); 
+                }, 3000);
+            }
+
+            // --- 2. MODIFICA: Animazione Macchina da Scrivere (con loop e <strong>) ---
+            const typedTextOutput = document.getElementById('typed-output');
+            // Array delle parti di testo. Il tag strong è un elemento separato.
+            const typedTextParts = ["Sono ", "<strong>Rosario Marra</strong>", ". Aiuto aziende, studenti e docenti a navigare la complessità tecnologica."];
+            let partIndex = 0;
+            let charIndex = 0;
+            const typingSpeed = 50; 
+            const eraseSpeed = 30; 
+            const pauseTime = 5000;
+
+            function typeWriter() {
+                if (!typedTextOutput) return;
+
+                if (partIndex < typedTextParts.length) {
+                    const currentPart = typedTextParts[partIndex];
+
+                    if (currentPart.startsWith("<strong")) {
+                        // Se è un tag, inseriscilo tutto in una volta
+                        typedTextOutput.innerHTML += currentPart;
+                        partIndex++;
+                        setTimeout(typeWriter, typingSpeed);
+                    } else {
+                        // Altrimenti, scrivi carattere per carattere
+                        if (charIndex < currentPart.length) {
+                            typedTextOutput.innerHTML += currentPart.charAt(charIndex);
+                            charIndex++;
+                            setTimeout(typeWriter, typingSpeed);
+                        } else {
+                            // Passa alla parte successiva
+                            partIndex++;
+                            charIndex = 0;
+                            setTimeout(typeWriter, typingSpeed);
+                        }
+                    }
+                } else {
+                    // Finito di scrivere tutto, imposta pausa per cancellare
+                    setTimeout(eraseWriter, pauseTime);
+                }
+            }
+
+            function eraseWriter() {
+                if (!typedTextOutput) return;
+                let currentHTML = typedTextOutput.innerHTML;
+
+                if (currentHTML.length > 0) {
+                    if (currentHTML.endsWith("</strong>")) {
+                        // Rimuovi l'intero tag bold in un colpo solo
+                        typedTextOutput.innerHTML = currentHTML.substring(0, currentHTML.length - "<strong>Rosario Marra</strong>".length);
+                    } else {
+                        // Cancella un carattere
+                        typedTextOutput.innerHTML = currentHTML.substring(0, currentHTML.length - 1);
+                    }
+                    setTimeout(eraseWriter, eraseSpeed);
+                } else {
+                    // Finito di cancellare, ricomincia
+                    partIndex = 0;
+                    charIndex = 0;
+                    setTimeout(typeWriter, 500);
+                }
+            }
+            
+            if (typedTextOutput) {
+                typeWriter(); // Avvia l'animazione la prima volta
+            }
+            // --- FINE MODIFICA ---
+
+
+            // --- 3. Animazioni allo Scorrimento (Scroll-Reveal) ---
+            const revealElements = document.querySelectorAll('.reveal');
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('show');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 }); 
+                revealElements.forEach(el => {
+                    observer.observe(el);
+                });
+            } else {
+                revealElements.forEach(el => {
+                    el.classList.add('show');
+                });
+            }
+
+            // --- 4. Logica Menu Hamburger ---
+            const hamburger = document.querySelector('.hamburger-menu');
+            const body = document.body;
+            const navLinks = document.querySelectorAll('.nav-menu a');
+
+            if (hamburger) {
+                hamburger.addEventListener('click', () => {
+                    body.classList.toggle('nav-open');
+                });
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    // Chiudi il menu solo se non è un link che apre un sottomenu (in futuro)
+                    // Per ora, chiude sempre
+                    if (!link.parentElement.classList.contains('nav-button-outline') && !link.parentElement.classList.contains('nav-button-primary')) {
+                         body.classList.remove('nav-open');
+                    }
+                    // Se è uno dei bottoni speciali, potresti volerlo tenere aperto,
+                    // ma per i link di navigazione principali (#hero, #servizi...), chiude.
+                    if (link.getAttribute('href').startsWith('#')) {
+                        body.classList.remove('nav-open');
+                    }
+                });
+            });
+
+            // --- 5. Logica Carosello Progetti ---
+            const projectGrid = document.querySelector('.projects-slider-container .project-grid');
+            const leftArrow = document.querySelector('.slider-arrow.left');
+            const rightArrow = document.querySelector('.slider-arrow.right');
+            const cardWidth = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--card-width'));
+            const gapWidth = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--gap-width'));
+            
+            const scrollAmount = cardWidth + gapWidth;
+            let scrollInterval; 
+
+            const startAutoScroll = () => {
+                clearInterval(scrollInterval); 
+                scrollInterval = setInterval(() => {
+                    if (!projectGrid) return; 
+                    if (projectGrid.scrollLeft + projectGrid.clientWidth >= projectGrid.scrollWidth - scrollAmount) {
+                        projectGrid.scrollTo({ left: 0, behavior: 'smooth' });
+                    } else {
+                        projectGrid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                    }
+                }, 5000); 
+            };
+
+            const stopAutoScroll = () => {
+                clearInterval(scrollInterval);
+            };
+
+            if (leftArrow && rightArrow && projectGrid) { 
+                leftArrow.addEventListener('click', () => {
+                    projectGrid.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                    stopAutoScroll(); 
+                });
+
+                rightArrow.addEventListener('click', () => {
+                    projectGrid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                    stopAutoScroll(); 
+                });
+
+                startAutoScroll();
+
+                projectGrid.addEventListener('mouseenter', stopAutoScroll);
+                projectGrid.addEventListener('mouseleave', startAutoScroll); 
+                projectGrid.addEventListener('mousedown', stopAutoScroll, { passive: true });
+                projectGrid.addEventListener('touchstart', stopAutoScroll, { passive: true });
+            }
+            
+            // --- 6. Logica Accordion Competenze ---
+            const techCards = document.querySelectorAll('.tech-card');
+
+            techCards.forEach(card => {
+                card.addEventListener('click', () => { 
+                    const isActive = card.classList.contains('active');
+
+                    techCards.forEach(otherCard => {
+                        otherCard.classList.remove('active');
+                    });
+
+                    if (!isActive) {
+                        card.classList.add('active');
+                    }
+                });
+            });
+
+            // --- 7. LOGICA: Animazione di Caricamento Codice (Quella tra Progetti e Competenze) ---
+            const loadingTextEl = document.getElementById('loading-text');
+            if (loadingTextEl) {
+                const loadingWords = [
+                    "01101001 01101110 01101001 01110100...", // "init..." in binary
+                    "#include <stdio.h>",
+                    "int main() {",
+                    "char* dev = \"Rosario\";",
+                    "printf(\"Loading...\");",
+                    "}",
+                    "01100101 01111000 01100101 01100011..."  // "exec..." in binary
+                ];
+                
+                let wordIndex = 0;
+                let charIndex = 0;
+                let isDeleting = false;
+                const typeSpeed = 100; // ms
+                const deleteSpeed = 50; // ms
+                const pauseTime = 1500; // ms
+
+                function typeLoadingText() {
+                    if (!loadingTextEl) return; 
+                    
+                    const currentWord = loadingWords[wordIndex];
+                    let displayText = '';
+
+                    if (isDeleting) {
+                        // --- Cancellazione ---
+                        displayText = currentWord.substring(0, charIndex - 1);
+                        charIndex--;
+                        
+                        if (charIndex === 0) {
+                            isDeleting = false;
+                            wordIndex = (wordIndex + 1) % loadingWords.length; 
+                            setTimeout(typeLoadingText, 500); 
+                            return;
+                        }
+                    } else {
+                        // --- Scrittura ---
+                        displayText = currentWord.substring(0, charIndex + 1);
+                        charIndex++;
+
+                        if (charIndex === currentWord.length) {
+                            isDeleting = true;
+                            setTimeout(typeLoadingText, pauseTime); 
+                            return;
+                        }
+                    }
+
+                    loadingTextEl.textContent = displayText;
+                    const speed = isDeleting ? deleteSpeed : typeSpeed;
+                    setTimeout(typeLoadingText, speed);
+                }
+                
+                typeLoadingText(); // Avvia l'animazione
+            }
+            // --- FINE LOGICA 7 ---
+
+            // --- 8. NUOVA LOGICA: Animazione "return Marra;" (Prima del Footer) ---
+            const footerLoadingTextEl = document.getElementById('loading-text-footer');
+            if (footerLoadingTextEl) {
+                const closingText = "return Marra;";
+                let closeCharIndex = 0;
+                const closeTypeSpeed = 150; // Più lenta e decisa
+
+                function typeClosingText() {
+                    if (closeCharIndex < closingText.length) {
+                        footerLoadingTextEl.textContent += closingText.charAt(closeCharIndex);
+                        closeCharIndex++;
+                        setTimeout(typeClosingText, closeTypeSpeed);
+                    }
+                    // Una volta finito, il cursore continuerà a lampeggiare (grazie al CSS)
+                }
+                
+                // Avvia questa animazione solo quando è visibile
+                const observer = new IntersectionObserver((entries) => {
+                    if (entries[0].isIntersecting) {
+                        setTimeout(() => { // Aggiunto un piccolo ritardo per dare tempo al reveal
+                             typeClosingText(); // Avvia l'animazione solo una volta
+                        }, 500);
+                        observer.unobserve(footerLoadingTextEl.parentElement); // Smetti di osservare
+                    }
+                }, { threshold: 0.8 }); // Avvia quando è quasi completamente visibile
+
+                observer.observe(footerLoadingTextEl.parentElement); // Osserva il wrapper
+            }
+            
+
+            // --- 9. NUOVA LOGICA: Pulsante Scroll-to-Top ---
+            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+            
+            if (scrollToTopBtn) {
+                // Mostra/Nascondi allo scorrimento
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 400) { // Mostra dopo 400px
+                        scrollToTopBtn.classList.add('show');
+                    } else {
+                        scrollToTopBtn.classList.remove('show');
+                    }
+                }, { passive: true }); // Aggiunto passive per performance
+
+                // Azione al click
+                scrollToTopBtn.addEventListener('click', () => {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+            // --- FINE NUOVA LOGICA 9 ---
+
+        });
+    </script>
+    </body>
+</html>
