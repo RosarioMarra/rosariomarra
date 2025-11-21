@@ -39,7 +39,8 @@
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            overflow-x: hidden; 
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         /* --- 2. Stili Generali (Titoli, Link, Bottoni) --- */
@@ -47,9 +48,9 @@
             font-weight: 700;
             line-height: 1.2;
             margin-bottom: 20px;
+            transition: color 0.3s ease;
         }
         
-        /* Aggiunto per stile h4 dal footer di index */
         h4 {
             font-size: 1.1rem;
             color: var(--text-color);
@@ -110,6 +111,7 @@
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
 
         .navbar {
@@ -228,7 +230,7 @@
             padding: 25px; 
             border-radius: 20px;
             border: 1px solid var(--border-color);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
             display: flex;
             flex-direction: column;
         }
@@ -244,13 +246,15 @@
         .service-card h3 {
             color: #FFFFFF;
             margin-bottom: 15px;
+            transition: color 0.3s ease;
         }
 
         .service-card p {
             font-size: 0.95rem;
             font-weight: 400;
             margin-bottom: 15px; 
-            flex-grow: 1; /* Fa espandere la descrizione */
+            flex-grow: 1; 
+            transition: color 0.3s ease;
         }
         
         /* Stili per i riquadri/tag dei corsi */
@@ -258,7 +262,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin-bottom: 15px; /* Spazio prima del titolo */
+            margin-bottom: 15px; 
         }
         .tag {
             font-size: 0.75rem;
@@ -266,10 +270,11 @@
             padding: 4px 10px;
             border-radius: 15px;
             text-transform: uppercase;
+            transition: color 0.3s ease, border-color 0.3s ease;
         }
         .tag-school {
             background-color: var(--accent-color);
-            color: var(--text-color);
+            color: var(--text-color); /* Testo su blu, ok in dark */
         }
         .tag-year {
             background-color: transparent;
@@ -305,12 +310,13 @@
         }
 
 
-        /* --- 9. Footer (PRESO DA INDEX.HTML) --- */
+        /* --- 9. Footer --- */
         .main-footer {
             text-align: center;
             padding: 40px 5%;
             border-top: 1px solid var(--border-color);
             margin-top: 50px;
+            transition: border-color 0.3s ease;
         }
 
         .footer-content {
@@ -325,7 +331,9 @@
         .footer-logo {
             flex-shrink: 0;
             opacity: 0.7;
+            transition: filter 0.3s ease;
         }
+        .logo img { transition: filter 0.3s ease; }
         
         .footer-contact {
             text-align: left;
@@ -399,18 +407,9 @@
         }
 
         @keyframes pulse {
-            0% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(10, 132, 255, 0.7);
-            }
-            70% {
-                transform: scale(1.05);
-                box-shadow: 0 0 0 10px rgba(10, 132, 255, 0);
-            }
-            100% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(10, 132, 255, 0);
-            }
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(10, 132, 255, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(10, 132, 255, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(10, 132, 255, 0); }
         }
 
         .footer-copyright {
@@ -419,22 +418,6 @@
             margin-bottom: 0;
             padding-top: 20px;
             border-top: 1px solid var(--border-color);
-        }
-        /* --- FINE STILI FOOTER --- */
-
-
-        /* --- 10. ELEMENTI GRAFICI (Divisori) --- */
-        .section-divider {
-            width: 80%;
-            max-width: 600px;
-            height: 1px;
-            margin: 0 auto;
-            background: linear-gradient(to right, 
-                transparent, 
-                var(--border-color) 30%, 
-                var(--border-color) 70%, 
-                transparent
-            );
         }
 
         /* --- 11. ANIMAZIONI DINAMICHE (Scroll-Reveal) --- */
@@ -463,8 +446,6 @@
                 padding: 60px 5%;
             }
             
-            /* .cta-buttons rimosso perché non presente in e-learning.html */
-
             .hamburger-menu {
                 display: block;
             }
@@ -528,33 +509,158 @@
                 height: 16px;
             }
 
-            /* Stili footer responsive (da index.html) */
             .footer-content {
                 flex-direction: column;
                 text-align: center;
                 gap: 40px; 
             }
-            .footer-logo {
-                order: -1; /* Mette il logo in cima */
-            }
-            .footer-contact {
-                text-align: center;
-                align-items: center; 
-            }
-            .footer-contact-item {
-                justify-content: center; 
-            }
-            .footer-social {
-                text-align: center;
-            }
-            .footer-social-links {
-                justify-content: center; /* Centra le icone social */
-            }
+            .footer-logo { order: -1; }
+            .footer-contact { text-align: center; align-items: center; }
+            .footer-contact-item { justify-content: center; }
+            .footer-social { text-align: center; }
+            .footer-social-links { justify-content: center; }
+        }
+
+        /* =========================================
+           --- STILI: SWITCH LIGHT MODE & TEMA --- 
+           ========================================= */
+        
+        /* Stile Switch Verticale */
+        #themeToggleBtn {
+            position: fixed;
+            top: 50%;
+            right: 15px; 
+            transform: translateY(-50%);
+            width: 28px;  
+            height: 70px;
+            background: transparent;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .toggle-track {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(28, 28, 30, 0.95); 
+            border: 1px solid var(--border-color);
+            border-radius: 50px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+            overflow: hidden;
+        }
+
+        .icon-position {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #888; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 35px; 
+            z-index: 1;
+            transition: color 0.3s ease;
+        }
+
+        .top-icon { top: 0; }
+        .bottom-icon { bottom: 0; }
+
+        .icon-position svg { width: 14px; height: 14px; }
+
+        .toggle-thumb {
+            position: absolute;
+            left: 3px; 
+            width: 22px; 
+            height: 22px;
+            background-color: var(--accent-color); 
+            border-radius: 50%;
+            z-index: 2;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            transition: transform 0.4s cubic-bezier(0.4, 0.0, 0.2, 1), background-color 0.3s ease; 
+            top: 6px; 
+            transform: translateY(36px); 
+        }
+
+        /* Gestione Icone Dark Mode */
+        .top-icon { color: var(--accent-color); } 
+        .bottom-icon { color: #FFF; z-index: 3; } 
+
+        /* --- STATO LIGHT MODE (Attivato) --- */
+        body.light-mode .toggle-track {
+            background-color: #FFFFFF; 
+            border-color: #D1D1D6;
+        }
+
+        body.light-mode .toggle-thumb {
+            transform: translateY(0px); 
+            background-color: #FF9500; 
+        }
+
+        body.light-mode .top-icon { color: #FFF; z-index: 3; } 
+        body.light-mode .bottom-icon { color: var(--accent-color); }
+
+
+        /* --- DEFINIZIONE VARIABILI LIGHT MODE --- */
+        body.light-mode {
+            --bg-color: #F5F5F7; 
+            --text-color: #1D1D1F; 
+            --text-secondary: #6e6e73;
+            --bg-secondary: #FFFFFF; 
+            --border-color: #d2d2d7;
+        }
+
+        /* Override colori per leggibilità in Light Mode */
+        body.light-mode h1, 
+        body.light-mode h2,
+        body.light-mode h3, 
+        body.light-mode h4 {
+            color: #1D1D1F;
+        }
+        
+        /* Stili specifici per Service Card in Light Mode */
+        body.light-mode .service-card {
+            background-color: #FFFFFF;
+            border-color: #E5E5EA;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        
+        body.light-mode .service-card h3,
+        body.light-mode .service-card p {
+            color: #1D1D1F;
+        }
+        
+        /* Stile Tag in Light Mode */
+        body.light-mode .tag-year {
+            color: #1D1D1F;
+            border-color: #D1D1D6;
+        }
+        
+        body.light-mode .tag-school {
+            color: #FFFFFF; /* Assicuriamo leggibilità su blu */
+        }
+
+        /* Navbar in modalità chiara */
+        body.light-mode .main-header {
+            background: rgba(255, 255, 255, 0.9);
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        body.light-mode .nav-menu { background-color: #F5F5F7; }
+        
+        /* Inversione Loghi */
+        body.light-mode .logo img,
+        body.light-mode .footer-logo img {
+            filter: invert(1);
         }
 
     </style>
     </head>
-<body class=""> <header class="main-header">
+<body class=""> 
+    
+    <header class="main-header">
         <nav class="navbar">
             <div class="logo">
                 <a href="index.html">
@@ -564,7 +670,7 @@
             
             <ul class="nav-menu">
                 <li><a href="index.html#hero">Chi Sono</a></li>
-                <li><a href="index.html#e-learning">E-learning</a></li>
+                <li><a href="index.html#servizi">Servizi</a></li>
                 <li><a href="index.html#progetti">Progetti</a></li>
                 <li><a href="index.html#competenze">Competenze</a></li>
                 <li><a href="index.html#contatti">Contatti</a></li>
@@ -733,6 +839,21 @@
         <p class="footer-copyright">&copy; 2025 Rosario Marra. Tutti i diritti riservati.</p>
     </footer>
 
+    <button id="themeToggleBtn" aria-label="Cambia Tema">
+        <div class="toggle-track">
+            <span class="icon-position top-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+                </svg>
+            </span>
+            <span class="icon-position bottom-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+                </svg>
+            </span>
+            <div class="toggle-thumb"></div>
+        </div>
+    </button>
     
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -773,6 +894,27 @@
                     body.classList.remove('nav-open');
                 });
             });
+
+            // --- LOGICA TOGGLE LIGHT/DARK MODE ---
+            const themeBtn = document.getElementById('themeToggleBtn');
+            const bodyEl = document.body;
+
+            // Controlla se l'utente aveva già salvato una preferenza
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                bodyEl.classList.add('light-mode');
+            }
+
+            if (themeBtn) {
+                themeBtn.addEventListener('click', () => {
+                    bodyEl.classList.toggle('light-mode');
+                    if (bodyEl.classList.contains('light-mode')) {
+                        localStorage.setItem('theme', 'light');
+                    } else {
+                        localStorage.setItem('theme', 'dark');
+                    }
+                });
+            }
 
         });
     </script>
